@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import store, {UPDATE_INSTRUCTIONS, UPDATE_LIST} from '../../store'
+import store, {UPDATE_INSTRUCTIONS, UPDATE_LIST, CLEAR_FIELDS} from '../../store'
 
 class Instructions extends Component {
   constructor(props) {
@@ -40,9 +40,11 @@ class Instructions extends Component {
     store.dispatch({
       type: UPDATE_LIST
     })
-    // store.dispatch({
-    //   type: CLEAR_FIELDS
-    // })
+  }
+  componentWillUnmount(){
+    store.dispatch({
+      type: CLEAR_FIELDS
+    })
   }
   render() {
     const instructions = this.state.instructions.map((instruction, i) => {

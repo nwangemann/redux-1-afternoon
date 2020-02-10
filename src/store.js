@@ -17,6 +17,7 @@ export const UPDATE_AUTHORLAST = "UPDATE_AUTHORLAST"
 export const UPDATE_INGREDIENTS = "UPDATE_INGREDIENTS"
 export const UPDATE_INSTRUCTIONS = "UPDATE_INSTRUCTIONS"
 export const UPDATE_LIST = "UPDATE_LIST"
+export const CLEAR_FIELDS = "CLEAR_FIELDS"
 
 
 function reducer(state = initialState, action){
@@ -69,7 +70,16 @@ function reducer(state = initialState, action){
                 ...state, 
                 list: newList
             }
-        // case CLEAR_FIELDS: 
+        case CLEAR_FIELDS: 
+        return {
+            ...state,
+            name: '',
+            category: '',
+            authorFirst: '',
+            authorLast: '',
+            ingredients: [],
+            instructions: []
+        }
         default: return state
     }
 }
